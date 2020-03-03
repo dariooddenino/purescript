@@ -1,0 +1,146 @@
+Error 1 of 4:
+
+  in module [33mRowDiffs.A[0m
+  at tests/purs/failing/RowDiffs/A.purs:3:5 - 3:31 (line 3, column 5 - line 3, column 31)
+
+    Could not match type
+    [33m            [0m
+    [33m  ( b :: Int[0m
+    [33m  ...       [0m
+    [33m  )         [0m
+    [33m            [0m
+    with type
+    [33m         [0m
+    [33m  ( ... )[0m
+    [33m         [0m
+
+  while trying to match type [33m            [0m
+                             [33m  ( b :: Int[0m
+                             [33m  ...       [0m
+                             [33m  )         [0m
+                             [33m            [0m
+    with type [33m         [0m
+              [33m  ( ... )[0m
+              [33m         [0m
+  while inferring the type of [33m[ { a: 1[0m
+                              [33m  , b: 2[0m
+                              [33m  }     [0m
+                              [33m, { a: 1[0m
+                              [33m  }     [0m
+                              [33m]       [0m
+  in value declaration [33ma[0m
+
+  See https://github.com/purescript/documentation/blob/master/errors/TypesDoNotUnify.md for more information,
+  or to contribute content related to this error.
+
+Error 2 of 4:
+
+  in module [33mRowDiffs.B[0m
+  at tests/purs/failing/RowDiffs/B.purs:3:5 - 3:39 (line 3, column 5 - line 3, column 39)
+
+    Could not match type
+    [33m            [0m
+    [33m  ( b :: Int[0m
+    [33m  ...       [0m
+    [33m  )         [0m
+    [33m            [0m
+    with type
+    [33m            [0m
+    [33m  ( c :: Int[0m
+    [33m  ...       [0m
+    [33m  )         [0m
+    [33m            [0m
+
+  while trying to match type [33m            [0m
+                             [33m  ( b :: Int[0m
+                             [33m  ...       [0m
+                             [33m  )         [0m
+                             [33m            [0m
+    with type [33m            [0m
+              [33m  ( c :: Int[0m
+              [33m  ...       [0m
+              [33m  )         [0m
+              [33m            [0m
+  while inferring the type of [33m[ { a: { b: ...[0m
+                              [33m       }       [0m
+                              [33m  }            [0m
+                              [33m, { a: { c: ...[0m
+                              [33m       }       [0m
+                              [33m  }            [0m
+                              [33m]              [0m
+  in value declaration [33mb[0m
+
+  See https://github.com/purescript/documentation/blob/master/errors/TypesDoNotUnify.md for more information,
+  or to contribute content related to this error.
+
+Error 3 of 4:
+
+  in module [33mRowDiffs.C[0m
+  at tests/purs/failing/RowDiffs/C.purs:3:5 - 3:40 (line 3, column 5 - line 3, column 40)
+
+    Could not match type
+    [33m     [0m
+    [33m  Int[0m
+    [33m     [0m
+    with type
+    [33m         [0m
+    [33m  Boolean[0m
+    [33m         [0m
+
+  while trying to match type [33m            [0m
+                             [33m  ( a :: Int[0m
+                             [33m  ...       [0m
+                             [33m  )         [0m
+                             [33m            [0m
+    with type [33m                [0m
+              [33m  ( a :: Boolean[0m
+              [33m  ...           [0m
+              [33m  )             [0m
+              [33m                [0m
+  while inferring the type of [33m[ { a: 1   [0m
+                              [33m  , b: 2   [0m
+                              [33m  }        [0m
+                              [33m, { a: true[0m
+                              [33m  , b: 2   [0m
+                              [33m  }        [0m
+                              [33m]          [0m
+  in value declaration [33mc[0m
+
+  See https://github.com/purescript/documentation/blob/master/errors/TypesDoNotUnify.md for more information,
+  or to contribute content related to this error.
+
+Error 4 of 4:
+
+  in module [33mRowDiffs.D[0m
+  at tests/purs/failing/RowDiffs/D.purs:3:5 - 7:2 (line 3, column 5 - line 7, column 2)
+
+    Could not match type
+    [33m            [0m
+    [33m  ( b :: Int[0m
+    [33m  ...       [0m
+    [33m  )         [0m
+    [33m            [0m
+    with type
+    [33m         [0m
+    [33m  ( ... )[0m
+    [33m         [0m
+
+  while trying to match type [33m            [0m
+                             [33m  ( b :: Int[0m
+                             [33m  ...       [0m
+                             [33m  )         [0m
+                             [33m            [0m
+    with type [33m         [0m
+              [33m  ( ... )[0m
+              [33m         [0m
+  while inferring the type of [33m[ { a: 1[0m
+                              [33m  , b: 2[0m
+                              [33m  }     [0m
+                              [33m, { a: 1[0m
+                              [33m  }     [0m
+                              [33m]       [0m
+  in value declaration [33md[0m
+
+  See https://github.com/purescript/documentation/blob/master/errors/TypesDoNotUnify.md for more information,
+  or to contribute content related to this error.
+
