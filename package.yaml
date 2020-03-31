@@ -95,6 +95,8 @@ dependencies:
   - unordered-containers
   - utf8-string >=1 && <2
   - vector
+  - pretty-show
+
 build-tools:
   - happy ==1.19.9
 

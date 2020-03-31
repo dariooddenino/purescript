@@ -14,14 +14,9 @@ Error 1 of 4:
     [33m  ( ... )[0m
     [33m         [0m
 
-  while trying to match type [33m            [0m
-                             [33m  ( b :: Int[0m
-                             [33m  ...       [0m
-                             [33m  )         [0m
-                             [33m            [0m
-    with type [33m         [0m
-              [33m  ( ... )[0m
-              [33m         [0m
+  while trying to match type [33mt0[0m
+    with type [33m{ a :: Int[0m
+              [33m}         [0m
   while inferring the type of [33m[ { a: 1[0m
                               [33m  , b: 2[0m
                               [33m  }     [0m
@@ -29,6 +24,8 @@ Error 1 of 4:
                               [33m  }     [0m
                               [33m]       [0m
   in value declaration [33ma[0m
+
+  where [33mt0[0m is an unknown type
 
   See https://github.com/purescript/documentation/blob/master/errors/TypesDoNotUnify.md for more information,
   or to contribute content related to this error.
@@ -51,16 +48,10 @@ Error 2 of 4:
     [33m  )         [0m
     [33m            [0m
 
-  while trying to match type [33m            [0m
-                             [33m  ( b :: Int[0m
-                             [33m  ...       [0m
-                             [33m  )         [0m
-                             [33m            [0m
-    with type [33m            [0m
-              [33m  ( c :: Int[0m
-              [33m  ...       [0m
-              [33m  )         [0m
-              [33m            [0m
+  while trying to match type [33m{ b :: Int[0m
+                             [33m}         [0m
+    with type [33m{ c :: Int[0m
+              [33m}         [0m
   while inferring the type of [33m[ { a: { b: ...[0m
                               [33m       }       [0m
                               [33m  }            [0m
@@ -125,14 +116,9 @@ Error 4 of 4:
     [33m  ( ... )[0m
     [33m         [0m
 
-  while trying to match type [33m            [0m
-                             [33m  ( b :: Int[0m
-                             [33m  ...       [0m
-                             [33m  )         [0m
-                             [33m            [0m
-    with type [33m         [0m
-              [33m  ( ... )[0m
-              [33m         [0m
+  while trying to match type [33mt0[0m
+    with type [33m{ a :: Int[0m
+              [33m}         [0m
   while inferring the type of [33m[ { a: 1[0m
                               [33m  , b: 2[0m
                               [33m  }     [0m
@@ -140,6 +126,8 @@ Error 4 of 4:
                               [33m  }     [0m
                               [33m]       [0m
   in value declaration [33md[0m
+
+  where [33mt0[0m is an unknown type
 
   See https://github.com/purescript/documentation/blob/master/errors/TypesDoNotUnify.md for more information,
   or to contribute content related to this error.

@@ -47,6 +47,9 @@ import qualified Text.Parsec.Error as PE
 import           Text.Parsec.Error (Message(..))
 import qualified Text.PrettyPrint.Boxes as Box
 
+import Text.Show.Pretty (ppShow)
+import Debug.Trace
+
 newtype ErrorSuggestion = ErrorSuggestion Text
 
 -- | Get the source span for an error
@@ -1289,13 +1292,16 @@ prettyPrintSingleError (PPEOptions codeColor full level showDocs relPath) e = fl
         (_, OtherHint) -> False
         (c1, c2) -> c1 == c2
 
+    ppTraceShowId :: Show a => a -> a
+    ppTraceShowId a = trace (ppShow a) a
+
     -- | See https://github.com/purescript/purescript/issues/1802
     stripRedundantHints :: SimpleErrorMessage -> [ErrorMessageHint] -> [ErrorMessageHint]
     stripRedundantHints ExprDoesNotHaveType{} = stripFirst isCheckHint
       where
       isCheckHint ErrorCheckingType{} = True
       isCheckHint _ = False
-    stripRedundantHints TypesDoNotUnify{} = stripFirst isUnifyHint
+    stripRedundantHints sem@TypesDoNotUnify{} = stripRedundantUnifyingHints sem . stripFirst isUnifyHint . ppTraceShowId
       where
       isUnifyHint ErrorUnifyingTypes{} = True
       isUnifyHint _ = False
@@ -1304,6 +1310,16 @@ prettyPrintSingleError (PPEOptions codeColor full level showDocs relPath) e = fl
       isSolverHint ErrorSolvingConstraint{} = True
       isSolverHint _ = False
     stripRedundantHints _ = id
+
+    -- | removes the ErrorUnifyingTypes hint when it contains the same information as TypesDoNotUnify
+    stripRedundantUnifyingHints :: SimpleErrorMessage -> [ErrorMessageHint] -> [ErrorMessageHint]
+    stripRedundantUnifyingHints (TypesDoNotUnify st1 st2) = filter stripHint'
+      where
+        stripHint' (ErrorUnifyingTypes (TUnknown _ _) _) = False
+        stripHint' (ErrorUnifyingTypes (TypeApp _ _ st1'@RCons{}) (TypeApp _ _ st2'@RCons{})) = st1 /= st1' || st2 /= st2'
+        stripHint' (ErrorUnifyingTypes st1' st2') = st1 /= st1' || st2 /= st2'
+        stripHint' _ = True
+    stripRedundantUnifyingHints _ = id
 
     stripFirst :: (ErrorMessageHint -> Bool) -> [ErrorMessageHint] -> [ErrorMessageHint]
     stripFirst p (PositionedError pos : hs) = PositionedError pos : stripFirst p hs
